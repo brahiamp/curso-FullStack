@@ -13,40 +13,58 @@ const Header = (props) => {
   )
 }
 
-const Content = (props) => {
-  console.log(props)
+const Content = () => {
+  //console.log(props)
+
+  const parts = [
+    {name: 'Fundamentals of React', exercises: 10},
+    {name: 'Using props to pass data', exercises: 7},
+    {name: 'State of a component', exercises: 14},
+    ]
+
   return(
     <>
-    <h1> Esta es la parte {props.part} que tiene {props.exerc} ejercicios</h1>
-    <p> El item {props.part} tiene {props.exercises} ejercicios</p>
+    <Part name = {parts[0].name} exercises= {parts[0].exercises} />
+    <Part name = {parts[1].name} exercises= {parts[1].exercises} />
+    <Part name = {parts[2].name} exercises= {parts[2].exercises} />
     </>
   )
 }
 
+const Total = (props) =>{
+  //console.log(props.parts)
 
-const App = () => {
-
-  const course = 'Half Stack application development' 
-  const part1 = 'Fundamentals of React'
-  const exercises1 = 10
-  const part2 = 'Using props to pass data'
-  const exercises2 = 7
-  const part3 = 'State of a component'
-  const exercises3 = 14
-
-  const info = [
-    {part: 'Fundamentals of React', exercises: 10},
-    {part: 'Using props to pass data', exercises: 7},
-    {part: 'State of a component', exercises: 14},
+  const parts = [
+    {name: 'Fundamentals of React', exercises: 10},
+    {name: 'Using props to pass data', exercises: 7},
+    {name: 'State of a component', exercises: 14},
     ]
 
+  return(
+
+      <div>{parts[0].exercises + parts[1].exercises 
+      + parts[2].exercises}</div>
+
+    )
+
+}
+
+const Part = (props) =>{
+ //console.log(props)
+  return(
+    <div>{props.name} ejercicio {props.exercises}</div>
+    )
+}
+
+
+const App = () => {
+  const course = 'Half Stack application development'  
   return (
     <div>
       <Header course = {course}/>
-      <p>
-      <Content part = {info[0].part} exercises = {info[0].exercises}/>
-      </p>
-      <p>Number of exercises {exercises1 + exercises2 + exercises3}</p>
+      <Content/>
+      <Total/>
+      
     </div>
   )
 }

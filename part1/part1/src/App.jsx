@@ -1,34 +1,53 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+//import reactLogo from './assets/react.svg'
+//import viteLogo from '/vite.svg'
+//import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+
+const Header = (props) => {
+  //console.log(props)
+  return(
+    <>
+    <h1> El nombre del curso es {props.course}</h1>
+    </>
+  )
+}
+
+const Content = (props) => {
+  console.log(props)
+  return(
+    <>
+    <h1> Esta es la parte {props.part} que tiene {props.exerc} ejercicios</h1>
+    <p> El item {props.part} tiene {props.exercises} ejercicios</p>
+    </>
+  )
+}
+
+
+const App = () => {
+
+  const course = 'Half Stack application development' 
+  const part1 = 'Fundamentals of React'
+  const exercises1 = 10
+  const part2 = 'Using props to pass data'
+  const exercises2 = 7
+  const part3 = 'State of a component'
+  const exercises3 = 14
+
+  const info = [
+    {part: 'Fundamentals of React', exercises: 10},
+    {part: 'Using props to pass data', exercises: 7},
+    {part: 'State of a component', exercises: 14},
+    ]
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+    <div>
+      <Header course = {course}/>
+      <p>
+      <Content part = {info[0].part} exercises = {info[0].exercises}/>
       </p>
-    </>
+      <p>Number of exercises {exercises1 + exercises2 + exercises3}</p>
+    </div>
   )
 }
 

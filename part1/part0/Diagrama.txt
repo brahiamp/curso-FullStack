@@ -1,0 +1,22 @@
+sequenceDiagram
+    participant user
+    participant browser
+    participant server
+
+    user->>browser: Types note and clicks Save
+    browser->>server: POST /new_note with note data
+    activate server
+    server-->>browser: 302 Redirect to /notes
+    deactivate server
+
+    browser->>server: GET /notes
+    activate server
+    server-->>browser: Updated HTML with new note
+    deactivate server
+
+    browser->>server: GET /data.json
+    activate server
+    server-->>browser: Updated JSON data with new note
+    deactivate server
+
+    browser->>user: Displays updated notes
